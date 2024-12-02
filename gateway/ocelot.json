@@ -1,5 +1,14 @@
 {
-  "Routes": [],
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/service-a/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+
+      "DownstreamPathTemplate": "/api/service-a/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 3000 }]
+    }
+  ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5095"
   }
