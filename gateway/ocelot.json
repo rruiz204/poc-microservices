@@ -7,6 +7,14 @@
       "DownstreamPathTemplate": "/api/service-a/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 3000 }]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/service-b/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+
+      "DownstreamPathTemplate": "/api/service-b/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 8000 }]
     }
   ],
   "GlobalConfiguration": {
