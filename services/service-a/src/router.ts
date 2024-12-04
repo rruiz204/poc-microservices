@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Controller from "./Controller";
+import Controller from "./controller";
 
 const ApiRouter = Router();
 

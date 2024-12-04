@@ -6,5 +6,5 @@ mod controller;
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/api/service-b", router::get_routes())
+    rocket::build().mount("/api", router::get_routes())
 }

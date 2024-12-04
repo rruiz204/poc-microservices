@@ -1,18 +1,18 @@
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/gateway/service-a/{everything}",
+      "UpstreamPathTemplate": "/gateway/express/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
 
-      "DownstreamPathTemplate": "/api/service-a/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 3000 }]
     },
     {
-      "UpstreamPathTemplate": "/gateway/service-b/{everything}",
+      "UpstreamPathTemplate": "/gateway/rocket/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
 
-      "DownstreamPathTemplate": "/api/service-b/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 8000 }]
     }
