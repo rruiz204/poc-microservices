@@ -13,6 +13,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "express": "^5.0.1"
+    "consul": "^2.0.1",
+    "express": "^5.0.1",
+    "uuid": "^11.0.3"
   }
 }
