@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  consul:
+    image: hashicorp/consul:1.20
+    container_name: consul
+    command: agent -dev -client=0.0.0.0
+    ports:
+      - "8500:8500"
+
+  service-express:
+    image: service-express
+    container_name: service-express
+    build:
+      context: ./services/service-a
+      dockerfile: Dockerfile
+    environment:
+      - CONSULT_HOST=consul
+      - CONSULT_PORT=8500
+    ports:
+      - "3000:3000"
+    depends_on:
+      - consul
