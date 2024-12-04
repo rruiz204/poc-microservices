@@ -7,7 +7,7 @@ services:
     command: agent -dev -client=0.0.0.0
     ports:
       - "8500:8500"
-
+  
   service-express:
     image: service-express
     container_name: service-express
@@ -21,5 +21,19 @@ services:
       - CONSULT_PORT=8500
     ports:
       - "3000:3000"
+    depends_on:
+      - consul
+
+  service-rocket:
+    image: service-rocket
+    container_name: service-rocket
+    build:
+      context: ./services/service-b
+      dockerfile: Dockerfile
+    environment:
+      - ROCKET_ADDRESS=0.0.0.0
+      - ROCKET_PORT=8000
+    ports:
+      - "8000:8000"
     depends_on:
       - consul
