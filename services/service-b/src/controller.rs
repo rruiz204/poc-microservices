@@ -4,5 +4,5 @@ use crate::model::IndexResponse;
 
 #[get("/")]
 pub fn index() -> Json<IndexResponse> {
-  Json(IndexResponse { path: String::from("index") })
+  Json(IndexResponse { path: String::from("index"), service: String::from("rocket") })
 }
