@@ -23,17 +23,3 @@ services:
       - "3000:3000"
     depends_on:
       - consul
-
-  service-rocket:
-    image: service-rocket
-    container_name: service-rocket
-    build:
-      context: ./services/service-b
-      dockerfile: Dockerfile
-    environment:
-      - ROCKET_ADDRESS=0.0.0.0
-      - ROCKET_PORT=8000
-    ports:
-      - "8000:8000"
-    depends_on:
-      - consul
