@@ -3,14 +3,12 @@ const {
   CONSUL_PORT,
 } = process.env;
 
-const CONSUL_HOST_PARSED = `http://${CONSUL_HOST}:${CONSUL_PORT}`;
+const CONSUL_ADDRESS = `http://${CONSUL_HOST}:${CONSUL_PORT}`;
 
 const CONSUL_PORT_PARSED = parseInt(CONSUL_PORT!, 10);
 
-
 export const ConsulConfig = {
-  host: CONSUL_HOST_PARSED,
-  port: CONSUL_PORT_PARSED
+  host: CONSUL_HOST,
+  port: CONSUL_PORT_PARSED,
+  address: CONSUL_ADDRESS,
 };
-
-export default ConsulConfig;
