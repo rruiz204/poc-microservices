@@ -1,7 +1,9 @@
 import express from "express";
-import ApiRouter from "./src/router";
-import ServiceConfig from "./src/config/service";
-import { HealthChecker, RegisterConsul } from "./src/consul";
+import { ApiRouter } from "./src/router";
+import { Bootstrap } from "./src/bootstrap";
+
+import { HealthChecker } from "@consul/health";
+import { ServiceConfig } from "@config/service";
 
 const app = express();
 
@@ -9,10 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", ApiRouter);
-app.get("/health", HealthChecker);
-
-await RegisterConsul();
+app.use("/health", HealthChecker);
 
 app.listen(ServiceConfig.port, () => {
-  console.log(`Server is listening at http://${ServiceConfig.address}:${ServiceConfig.port}`);
+  const url = `http://${ServiceConfig.address}:${ServiceConfig.port}`;
+  console.log(`Server is listening at ${url}`);
 });
+
+await Bootstrap();
