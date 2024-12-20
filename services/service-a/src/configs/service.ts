@@ -1,18 +1,23 @@
 import { v4 } from "uuid";
 
-const UUID = v4();
-const HOST = process.env.EXPRESS_HOST!;
-const PORT = parseInt(process.env.EXPRESS_PORT!, 10);
+const {
+  EXPRESS_HOST,
+  EXPRESS_PORT,
+} = process.env;
 
-const ServiceConfig = {
-  id: `express-service-${UUID}`,
-  name: "express-service",
-  address: HOST,
-  port: PORT,
+const UUID = v4();
+
+const EXPRESS_PORT_PARSED = parseInt(EXPRESS_PORT!, 10);
+
+const CHECKER_HTTP = `http://${EXPRESS_HOST}:${EXPRESS_PORT}/health`;
+
+export const ServiceConfig = {
+  id: UUID,
+  name: "express-service-a",
+  address: EXPRESS_HOST,
+  port: EXPRESS_PORT_PARSED,
   checker: {
-    name: `${UUID}-health-check`,
-    http: `http://${HOST}:${PORT}/health`
+    name: "service-a-health",
+    http: CHECKER_HTTP,
   },
 };
-
-export default ServiceConfig;
