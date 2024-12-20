@@ -1,6 +1,6 @@
 import express from "express";
 import ApiRouter from "./src/router";
-import ServiceConfig from "./src/configs/service";
+import ServiceConfig from "./src/config/service";
 import { HealthChecker, RegisterConsul } from "./src/consul";
 
 const app = express();
