@@ -1,8 +1,7 @@
 import type { Request, Response } from "express";
 
 const index = async (req: Request, res: Response) => {
-  res.status(200).json({ path: "index", service: "express" });
+  res.status(200).json({ path: "index", service: "A" });
 };
 
-const Controller = Object.freeze({ index });
-export default Controller;
+export const Controller = Object.freeze({ index });
