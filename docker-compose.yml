@@ -4,10 +4,10 @@ services:
   consul:
     image: hashicorp/consul:1.20
     container_name: consul
-    command: agent -dev -client=0.0.0.0
+    command: agent -dev -ui -client=0.0.0.0
     ports:
       - "8500:8500"
-  
+
   service-express-a:
     image: service-express-a
     container_name: service-express-a
@@ -19,8 +19,8 @@ services:
     environment:
       - EXPRESS_HOST=service-express-a
       - EXPRESS_PORT=3000
-      - CONSULT_HOST=consul
-      - CONSULT_PORT=8500
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
     depends_on:
       - consul
 
@@ -35,7 +35,7 @@ services:
     environment:
       - EXPRESS_HOST=service-express-b
       - EXPRESS_PORT=4000
-      - CONSULT_HOST=consul
-      - CONSULT_PORT=8500
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
     depends_on:
       - consul
